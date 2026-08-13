@@ -6,9 +6,21 @@
 
     <title>Dinámicas de Poder | A.W. Ross</title>
 
-    <meta name="description" content="Dinámicas de Poder, una trilogía de dark romance de A.W. Ross. Tres historias sobre poder, obsesión, control y las heridas que nos enseñan a amar.">
+    <meta name="description" content="Dinámicas de Poder, trilogía de dark romance de A.W. Ross. Tres historias sobre poder, obsesión, control y las heridas que nos enseñan a amar.">
 
     <style>
+        :root {
+            --black: #070707;
+            --black-soft: #0d0d0d;
+            --black-card: #121212;
+            --gold: #d4af37;
+            --gold-bright: #f3d675;
+            --gold-soft: #b9962e;
+            --cream: #eee8df;
+            --muted: #aaa39b;
+            --line: rgba(212,175,55,.22);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -20,15 +32,25 @@
         }
 
         body {
-            background: #090909;
-            color: #e8e3df;
+            background: var(--black);
+            color: var(--cream);
             font-family: Georgia, "Times New Roman", serif;
-            line-height: 1.7;
+            line-height: 1.75;
+        }
+
+        body.reading-mode {
+            background: #f4f1e8;
+            color: #171717;
         }
 
         a {
             color: inherit;
             text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
         }
 
         /* =========================
@@ -40,41 +62,55 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 22px 7%;
+            padding: 18px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
 
-            background: rgba(9, 9, 9, 0.82);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            background: rgba(5,5,5,.88);
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid var(--line);
         }
 
         .logo {
-            font-family: Georgia, serif;
-            font-size: 1.05rem;
+            font-size: 1rem;
             letter-spacing: 4px;
             text-transform: uppercase;
+            color: var(--gold-bright);
         }
 
         .nav-links {
             display: flex;
-            gap: 28px;
+            gap: 25px;
             list-style: none;
             font-family: Arial, sans-serif;
-            font-size: 0.75rem;
+            font-size: .68rem;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         .nav-links a {
-            opacity: 0.7;
-            transition: 0.3s;
+            opacity: .65;
+            transition: .3s;
         }
 
         .nav-links a:hover {
+            color: var(--gold-bright);
             opacity: 1;
+        }
+
+        .reading-toggle {
+            border: 1px solid var(--gold-soft);
+            background: transparent;
+            color: var(--gold-bright);
+            padding: 9px 13px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: .62rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         /* =========================
@@ -87,78 +123,98 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 120px 20px 80px;
+            padding: 130px 20px 90px;
 
             background:
-                radial-gradient(circle at center, #201b1b 0%, #0b0b0b 48%, #050505 100%);
+                radial-gradient(
+                    circle at center,
+                    #272015 0%,
+                    #100e0b 38%,
+                    #050505 75%
+                );
         }
 
         .hero-content {
-            max-width: 950px;
+            max-width: 1000px;
         }
 
         .eyebrow {
             font-family: Arial, sans-serif;
-            font-size: 0.72rem;
-            letter-spacing: 5px;
+            font-size: .68rem;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            opacity: 0.55;
-            margin-bottom: 25px;
+            color: var(--gold);
+            margin-bottom: 28px;
         }
 
         .hero h1 {
-            font-size: clamp(4rem, 12vw, 9rem);
+            font-size: clamp(3.5rem, 11vw, 9rem);
             font-weight: normal;
-            letter-spacing: 12px;
+            letter-spacing: 9px;
             text-transform: uppercase;
-            line-height: 0.9;
+            line-height: .9;
+
+            color: var(--gold-bright);
+            text-shadow:
+                0 0 18px rgba(212,175,55,.16),
+                0 0 50px rgba(212,175,55,.08);
         }
 
-        .hero .author {
+        .author {
             margin-top: 30px;
             font-family: Arial, sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 5px;
+            font-size: .8rem;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            opacity: 0.65;
+            color: #d9d0c7;
         }
 
         .hero-line {
-            width: 70px;
+            width: 90px;
             height: 1px;
-            background: #8b7770;
+            background: var(--gold);
             margin: 35px auto;
         }
 
         .hero-quote {
-            max-width: 650px;
+            max-width: 680px;
             margin: auto;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-style: italic;
-            color: #c9c0bb;
+            color: #c9c0b6;
         }
 
         .buttons {
-            margin-top: 45px;
+            margin-top: 40px;
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
         .button {
-            padding: 14px 28px;
-            border: 1px solid rgba(255,255,255,0.3);
+            display: inline-block;
+            padding: 13px 27px;
+            border: 1px solid var(--gold-soft);
+
+            color: var(--gold-bright);
+
             font-family: Arial, sans-serif;
-            font-size: 0.72rem;
+            font-size: .68rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            transition: 0.3s;
+
+            transition: .3s;
         }
 
         .button:hover {
-            background: #e8e3df;
-            color: #090909;
+            background: var(--gold);
+            color: #080808;
+            border-color: var(--gold);
+        }
+
+        .gold {
+            color: var(--gold-bright);
         }
 
         /* =========================
@@ -166,27 +222,28 @@
         ========================== */
 
         section {
-            padding: 110px 8%;
+            padding: 110px 7%;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 55px;
         }
 
         .section-title span {
             display: block;
             font-family: Arial, sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 4px;
+            font-size: .65rem;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            opacity: 0.45;
-            margin-bottom: 15px;
+            color: var(--gold);
+            margin-bottom: 14px;
         }
 
         .section-title h2 {
-            font-size: clamp(2.3rem, 5vw, 4rem);
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
             font-weight: normal;
+            color: var(--gold-bright);
         }
 
         /* =========================
@@ -194,25 +251,26 @@
         ========================== */
 
         .trilogy-intro {
-            max-width: 800px;
+            max-width: 820px;
             margin: 0 auto 70px;
             text-align: center;
-            font-size: 1.1rem;
-            color: #bbb3ae;
+            font-size: 1.05rem;
+            color: var(--muted);
         }
 
         .books {
+            max-width: 1150px;
+            margin: auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            max-width: 1100px;
-            margin: auto;
+            gap: 24px;
         }
 
         .book {
-            min-height: 390px;
-            padding: 40px 30px;
-            border: 1px solid rgba(255,255,255,0.09);
+            min-height: 430px;
+            padding: 30px;
+
+            border: 1px solid rgba(212,175,55,.16);
 
             display: flex;
             flex-direction: column;
@@ -221,44 +279,46 @@
             background:
                 linear-gradient(
                     145deg,
-                    rgba(255,255,255,0.035),
-                    rgba(255,255,255,0.01)
+                    rgba(212,175,55,.07),
+                    rgba(255,255,255,.015)
                 );
 
-            transition: transform 0.3s, border-color 0.3s;
+            transition: .35s;
         }
 
         .book:hover {
-            transform: translateY(-7px);
-            border-color: rgba(255,255,255,0.25);
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 50px rgba(0,0,0,.3);
         }
 
         .book-number {
             font-family: Arial, sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            opacity: 0.45;
+            font-size: .65rem;
+            letter-spacing: 4px;
+            color: var(--gold);
             margin-bottom: auto;
         }
 
         .book h3 {
-            font-size: 2.5rem;
+            font-size: 2.7rem;
             font-weight: normal;
-            margin-bottom: 10px;
+            color: var(--gold-bright);
+            margin-bottom: 12px;
         }
 
         .book p {
-            color: #aaa19d;
-            font-size: 0.95rem;
+            color: var(--muted);
+            font-size: .93rem;
         }
 
         .available {
-            margin-top: 25px;
+            margin-top: 22px;
             font-family: Arial, sans-serif;
-            font-size: 0.65rem;
+            font-size: .6rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            opacity: 0.65;
+            color: var(--gold);
         }
 
         /* =========================
@@ -266,40 +326,52 @@
         ========================== */
 
         .control-section {
-            background: #0d0c0c;
+            background: #0b0a09;
+            border-top: 1px solid rgba(212,175,55,.08);
+            border-bottom: 1px solid rgba(212,175,55,.08);
         }
 
         .control-grid {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: auto;
+
             display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
+            grid-template-columns: .8fr 1.2fr;
             gap: 80px;
             align-items: center;
         }
 
-        .cover-placeholder {
-            min-height: 500px;
-            border: 1px solid rgba(255,255,255,0.1);
+        .cover-frame {
+            padding: 8px;
+            border: 1px solid var(--gold-soft);
+            background: #050505;
+        }
 
+        .cover-frame img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .cover-placeholder {
+            height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
 
             background:
-                radial-gradient(circle, #242020, #0b0b0b 70%);
-        }
+                radial-gradient(circle, #292319, #080808 72%);
 
-        .cover-placeholder div {
-            padding: 30px;
+            border: 1px solid rgba(212,175,55,.25);
         }
 
         .cover-placeholder strong {
             display: block;
-            font-size: 3.5rem;
-            font-weight: normal;
+            font-size: 3.2rem;
             letter-spacing: 7px;
+            color: var(--gold-bright);
+            font-weight: normal;
         }
 
         .cover-placeholder small {
@@ -307,25 +379,70 @@
             margin-top: 15px;
             font-family: Arial, sans-serif;
             letter-spacing: 3px;
-            opacity: 0.5;
+            color: var(--gold);
         }
 
         .control-text h2 {
             font-size: 3.5rem;
             font-weight: normal;
-            margin-bottom: 30px;
+            color: var(--gold-bright);
+            margin-bottom: 25px;
         }
 
-        .control-text .tagline {
+        .tagline {
+            font-size: 1.18rem;
             font-style: italic;
-            font-size: 1.2rem;
-            color: #c5bbb6;
-            margin-bottom: 30px;
+            color: #d0c3b5;
+            margin-bottom: 28px;
         }
 
         .control-text p {
-            color: #aaa19d;
-            margin-bottom: 18px;
+            color: var(--muted);
+            margin-bottom: 17px;
+        }
+
+        /* =========================
+           LECTURA
+        ========================== */
+
+        .reader {
+            max-width: 900px;
+            margin: 70px auto 0;
+
+            display: none;
+
+            padding: 55px 7%;
+
+            background: #151412;
+            border: 1px solid rgba(212,175,55,.18);
+        }
+
+        .reader.active {
+            display: block;
+        }
+
+        .reader-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .reader-header h3 {
+            font-size: 2.4rem;
+            font-weight: normal;
+            color: var(--gold-bright);
+        }
+
+        .reader p {
+            margin-bottom: 22px;
+            color: #c8c0b8;
+        }
+
+        .reader-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 40px;
         }
 
         /* =========================
@@ -333,53 +450,56 @@
         ========================== */
 
         .characters {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: auto;
+
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
 
         .character {
-            border: 1px solid rgba(255,255,255,0.08);
-            padding: 25px;
-            background: rgba(255,255,255,0.015);
+            padding: 20px;
+            border: 1px solid rgba(212,175,55,.13);
+            background: rgba(255,255,255,.015);
         }
 
         .character-image {
-            height: 360px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-
-            background:
-                linear-gradient(145deg, #1c1919, #0a0a0a);
-
+            height: 450px;
+            overflow: hidden;
+            background: #111;
             margin-bottom: 25px;
-            color: #777;
-            font-family: Arial, sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        }
+
+        .character-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: .5s;
+        }
+
+        .character:hover img {
+            transform: scale(1.025);
         }
 
         .character h3 {
             font-size: 2rem;
             font-weight: normal;
+            color: var(--gold-bright);
         }
 
         .character .role {
             font-family: Arial, sans-serif;
-            font-size: 0.65rem;
+            font-size: .62rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            opacity: 0.45;
-            margin: 7px 0 18px;
+            color: var(--gold);
+            margin: 6px 0 18px;
         }
 
         .character p {
-            color: #aaa19d;
+            color: var(--muted);
         }
 
         /* =========================
@@ -388,20 +508,47 @@
 
         .author-section {
             text-align: center;
-            background: #0d0c0c;
+            background: #0c0b0a;
+            border-top: 1px solid rgba(212,175,55,.08);
         }
 
         .author-text {
-            max-width: 720px;
+            max-width: 730px;
             margin: auto;
-            color: #aaa19d;
-            font-size: 1.05rem;
+            color: var(--muted);
         }
 
         .author-name {
             font-size: 3rem;
+            color: var(--gold-bright);
             margin-bottom: 25px;
+        }
+
+        /* =========================
+           DERECHOS
+        ========================== */
+
+        .copyright {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 35px;
+
+            border: 1px solid rgba(212,175,55,.2);
+            background: rgba(212,175,55,.025);
+
+            text-align: center;
+        }
+
+        .copyright h3 {
+            font-size: 1.5rem;
             font-weight: normal;
+            color: var(--gold-bright);
+            margin-bottom: 15px;
+        }
+
+        .copyright p {
+            color: #a9a199;
+            font-size: .9rem;
         }
 
         /* =========================
@@ -418,9 +565,9 @@
         }
 
         .community-content p {
-            color: #aaa19d;
-            font-size: 1.1rem;
-            margin-bottom: 35px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            margin-bottom: 25px;
         }
 
         /* =========================
@@ -428,31 +575,74 @@
         ========================== */
 
         footer {
-            padding: 50px 8%;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 55px 7%;
+            border-top: 1px solid rgba(212,175,55,.15);
             text-align: center;
         }
 
         footer strong {
             font-size: 1.2rem;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
+            color: var(--gold-bright);
             font-weight: normal;
         }
 
         footer p {
-            margin-top: 15px;
+            margin-top: 13px;
             font-family: Arial, sans-serif;
-            font-size: 0.65rem;
+            font-size: .6rem;
             letter-spacing: 2px;
-            opacity: 0.4;
+            opacity: .45;
             text-transform: uppercase;
+        }
+
+        /* =========================
+           MODO LECTURA
+        ========================== */
+
+        body.reading-mode nav {
+            background: rgba(244,241,232,.94);
+            border-color: rgba(0,0,0,.1);
+        }
+
+        body.reading-mode nav,
+        body.reading-mode .nav-links a {
+            color: #222;
+        }
+
+        body.reading-mode .reading-toggle {
+            color: #222;
+            border-color: #555;
+        }
+
+        body.reading-mode .control-section {
+            background: #f4f1e8;
+        }
+
+        body.reading-mode .reader {
+            background: #fffdf7;
+            border-color: #cfc7b7;
+        }
+
+        body.reading-mode .reader p {
+            color: #27231f;
+        }
+
+        body.reading-mode .reader-header h3,
+        body.reading-mode .section-title h2 {
+            color: #25211d;
+        }
+
+        body.reading-mode .control-text p,
+        body.reading-mode .trilogy-intro {
+            color: #403b35;
         }
 
         /* =========================
            RESPONSIVE
         ========================== */
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
 
             .nav-links {
                 display: none;
@@ -468,12 +658,45 @@
                 gap: 45px;
             }
 
+            .cover-frame img,
             .cover-placeholder {
-                min-height: 420px;
+                height: 520px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 16px 5%;
+            }
+
+            .logo {
+                font-size: .75rem;
+                letter-spacing: 2px;
+            }
+
+            .hero h1 {
+                letter-spacing: 5px;
             }
 
             section {
-                padding: 80px 6%;
+                padding: 80px 5%;
+            }
+
+            .books {
+                gap: 18px;
+            }
+
+            .book {
+                min-height: 350px;
+            }
+
+            .character-image {
+                height: 390px;
+            }
+
+            .reader {
+                padding: 35px 20px;
             }
         }
     </style>
@@ -481,182 +704,202 @@
 
 <body>
 
-    <!-- =========================
-         NAVEGACIÓN
-    ========================== -->
+<!-- =========================
+     NAVEGACIÓN
+========================== -->
 
-    <nav>
-        <a href="#inicio" class="logo">Dinámicas de Poder</a>
+<nav>
 
-        <ul class="nav-links">
-            <li><a href="#trilogia">Trilogía</a></li>
-            <li><a href="#control">Control</a></li>
-            <li><a href="#personajes">Personajes</a></li>
-            <li><a href="#autor">A.W. Ross</a></li>
-            <li><a href="#comunidad">Comunidad</a></li>
-        </ul>
-    </nav>
+    <a href="#inicio" class="logo">
+        Dinámicas de Poder
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="#trilogia">Trilogía</a></li>
+        <li><a href="#control">Control</a></li>
+        <li><a href="#personajes">Personajes</a></li>
+        <li><a href="#autor">A.W. Ross</a></li>
+        <li><a href="#comunidad">Comunidad</a></li>
+    </ul>
+
+    <button class="reading-toggle" onclick="toggleReadingMode()">
+        Modo lectura
+    </button>
+
+</nav>
 
 
-    <!-- =========================
-         HERO
-    ========================== -->
+<!-- =========================
+     HERO
+========================== -->
 
-    <header class="hero" id="inicio">
+<header class="hero" id="inicio">
 
-        <div class="hero-content">
+    <div class="hero-content">
 
-            <div class="eyebrow">
-                Una trilogía de A.W. Ross
-            </div>
-
-            <h1>Dinámicas<br>de Poder</h1>
-
-            <div class="author">
-                A.W. Ross
-            </div>
-
-            <div class="hero-line"></div>
-
-            <p class="hero-quote">
-                Tres historias. Tres formas de ejercer y ceder el poder.
-                Y una pregunta que permanece:
-                <br>
-                <em>¿Quién tiene realmente el control?</em>
-            </p>
-
-            <div class="buttons">
-                <a href="#trilogia" class="button">
-                    Descubrir la trilogía
-                </a>
-
-                <a href="#control" class="button">
-                    Leer Control
-                </a>
-            </div>
-
+        <div class="eyebrow">
+            Una trilogía de A.W. Ross
         </div>
 
-    </header>
+        <h1>
+            Dinámicas<br>
+            de Poder
+        </h1>
 
-
-    <!-- =========================
-         TRILOGÍA
-    ========================== -->
-
-    <section id="trilogia">
-
-        <div class="section-title">
-            <span>El universo</span>
-            <h2>Dinámicas de Poder</h2>
+        <div class="author">
+            A.W. Ross
         </div>
 
-        <p class="trilogy-intro">
+        <div class="hero-line"></div>
 
-            <strong>Dinámicas de Poder</strong> es una trilogía que explora
-            cómo el pasado moldea la forma en que amamos, controlamos y nos
-            obsesionamos.
-
-            <br><br>
-
-            A través de tres protagonistas con personalidades marcadamente
-            distintas, la historia se adentra en sus traumas de infancia y
-            en las decisiones que, ya en la adultez, los llevan a establecer
-            relaciones donde el poder, la manipulación y la necesidad de
-            control se entrelazan de formas peligrosas.
-
-            <br><br>
-
-            Cada uno representa una forma distinta de ejercer y ceder el poder,
-            construyendo juntos un vínculo complejo que redefine los límites
-            entre amor, dependencia y dominación.
-
+        <p class="hero-quote">
+            Tres historias. Tres formas de ejercer y ceder el poder.
+            <br>
+            <em>¿Quién tiene realmente el control?</em>
         </p>
 
+        <div class="buttons">
 
-        <div class="books">
+            <a href="#trilogia" class="button">
+                Descubrir la trilogía
+            </a>
 
-            <article class="book">
-
-                <div class="book-number">
-                    LIBRO I
-                </div>
-
-                <h3>Control</h3>
-
-                <p>
-                    Derry Wyndford aprendió demasiado pronto que mantener
-                    el control era la única forma de sobrevivir.
-                </p>
-
-                <div class="available">
-                    Disponible para leer gratuitamente
-                </div>
-
-            </article>
-
-
-            <article class="book">
-
-                <div class="book-number">
-                    LIBRO II
-                </div>
-
-                <h3>Próximamente</h3>
-
-                <p>
-                    Una nueva historia.
-                    Una nueva dinámica.
-                    Un nuevo protagonista.
-                </p>
-
-                <div class="available">
-                    En proceso
-                </div>
-
-            </article>
-
-
-            <article class="book">
-
-                <div class="book-number">
-                    LIBRO III
-                </div>
-
-                <h3>Próximamente</h3>
-
-                <p>
-                    El último capítulo de una trilogía
-                    construida alrededor del poder.
-                </p>
-
-                <div class="available">
-                    En proceso
-                </div>
-
-            </article>
+            <a href="#control" class="button">
+                Leer Control
+            </a>
 
         </div>
 
-    </section>
+    </div>
+
+</header>
 
 
-    <!-- =========================
-         CONTROL
-    ========================== -->
+<!-- =========================
+     TRILOGÍA
+========================== -->
 
-    <section class="control-section" id="control">
+<section id="trilogia">
 
-        <div class="section-title">
+    <div class="section-title">
+        <span>El universo</span>
+        <h2>Dinámicas de Poder</h2>
+    </div>
 
-            <span>Libro I</span>
+    <p class="trilogy-intro">
 
-            <h2>Control</h2>
+        <strong class="gold">Dinámicas de Poder</strong> es una trilogía
+        autoconclusiva de dark romance que explora cómo el pasado moldea
+        la forma en que amamos, controlamos y nos obsesionamos.
 
-        </div>
+        <br><br>
+
+        Tres protagonistas con personalidades distintas se enfrentan a las
+        consecuencias de heridas que comenzaron mucho antes de sus
+        relaciones adultas.
+
+        <br><br>
+
+        Poder, manipulación, obsesión y necesidad de control se entrelazan
+        para crear relaciones donde los límites entre amor, dependencia
+        y dominación pueden desaparecer.
+    </p>
 
 
-        <div class="control-grid">
+    <div class="books">
+
+        <article class="book">
+
+            <div class="book-number">
+                LIBRO I
+            </div>
+
+            <h3>Control</h3>
+
+            <p>
+                Derry Wyndford aprendió demasiado pronto que mantener
+                el control era la única forma de sobrevivir.
+            </p>
+
+            <div class="available">
+                Disponible gratuitamente
+            </div>
+
+        </article>
+
+
+        <article class="book">
+
+            <div class="book-number">
+                LIBRO II
+            </div>
+
+            <h3>Fijación</h3>
+
+            <p>
+                Billy y Arella protagonizan la segunda historia
+                de la trilogía.
+            </p>
+
+            <div class="available">
+                En proceso
+            </div>
+
+        </article>
+
+
+        <article class="book">
+
+            <div class="book-number">
+                LIBRO III
+            </div>
+
+            <h3>Colisión</h3>
+
+            <p>
+                Colt y Angelica protagonizan el último capítulo
+                de Dinámicas de Poder.
+            </p>
+
+            <div class="available">
+                En proceso
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTROL
+========================== -->
+
+<section class="control-section" id="control">
+
+    <div class="section-title">
+
+        <span>Libro I</span>
+
+        <h2>Control</h2>
+
+    </div>
+
+
+    <div class="control-grid">
+
+
+        <!-- PORTADA -->
+
+        <div class="cover-frame">
+
+            <!--
+            CUANDO SUBAMOS LA PORTADA,
+            ESTE ARCHIVO SE LLAMARÁ:
+
+            images/control-portada.jpg
+            -->
 
             <div class="cover-placeholder">
 
@@ -668,263 +911,435 @@
                         A.W. ROSS
                     </small>
 
-                    <!--
-                    AQUÍ COLOCAREMOS LA PORTADA
-                    CUANDO LA TENGAMOS.
-                    -->
-
-                </div>
-
-            </div>
-
-
-            <div class="control-text">
-
-                <p class="tagline">
-                    Hay secretos que no solo destruyen reputaciones,
-                    sino también a quienes intentan esconderlos.
-                </p>
-
-
-                <p>
-                    Las vueltas de la vida son un enigma, y lo son aún más
-                    cuando alguien ha aprendido a vivir controlándolo todo.
-                </p>
-
-                <p>
-                    Derry Wyndford fue un niño que perdió su inocencia
-                    demasiado pronto. Desde entonces, desarrolló una
-                    necesidad casi obsesiva de mantener el control de todo
-                    cuanto lo rodea.
-                </p>
-
-                <p>
-                    Criado en una familia donde las apariencias lo son todo,
-                    entendió que el dinero no solo compra silencio, sino
-                    también la ausencia de consecuencias.
-                </p>
-
-                <p>
-                    Derry no cree en el romanticismo, pero sabe fingirlo
-                    a la perfección.
-                </p>
-
-                <p>
-                    Cuando Eloise, una estudiante de actuación, entra en su
-                    vida, algo empieza a cambiar. Su presencia no solo
-                    desafía su forma de entender las relaciones, sino que
-                    despierta en él un deseo peligroso de poseerla y lo
-                    arrastra hacia un pasado que había mantenido enterrado
-                    durante años.
-                </p>
-
-                <p>
-                    En esta historia nos adentraremos en la mente de Derry,
-                    un lugar donde la luz y la oscuridad conviven como una sola.
-                </p>
-
-
-                <div class="buttons" style="justify-content:flex-start;">
-
-                    <!--
-                    MÁS ADELANTE CAMBIAREMOS # POR
-                    EL ENLACE REAL DONDE SE LEERÁ EL LIBRO.
-                    -->
-
-                    <a href="#" class="button">
-                        Leer gratuitamente
-                    </a>
-
                 </div>
 
             </div>
 
         </div>
 
-    </section>
+
+        <!-- SINOPSIS -->
+
+        <div class="control-text">
+
+            <p class="tagline">
+                Hay secretos que no solo destruyen reputaciones,
+                sino también a quienes intentan esconderlos.
+            </p>
+
+
+            <p>
+                Las vueltas de la vida son un enigma, y lo son aún más
+                cuando alguien ha aprendido a vivir controlándolo todo.
+            </p>
+
+            <p>
+                Derry Wyndford fue un niño que perdió su inocencia
+                demasiado pronto. Desde entonces, desarrolló una
+                necesidad casi obsesiva de mantener el control de todo
+                cuanto lo rodea.
+            </p>
+
+            <p>
+                Criado en una familia donde las apariencias lo son todo,
+                entendió que el dinero no solo compra silencio, sino
+                también la ausencia de consecuencias.
+            </p>
+
+            <p>
+                Derry no cree en el romanticismo, pero sabe fingirlo
+                a la perfección.
+            </p>
+
+            <p>
+                Cuando Eloise, una estudiante de actuación, entra en su
+                vida, algo empieza a cambiar. Su presencia no solo
+                desafía su forma de entender las relaciones, sino que
+                despierta en él un deseo peligroso de poseerla y lo
+                arrastra hacia un pasado que había mantenido enterrado
+                durante años.
+            </p>
+
+            <p>
+                En esta historia nos adentraremos en la mente de Derry,
+                un lugar donde la luz y la oscuridad conviven como una sola.
+            </p>
+
+
+            <div class="buttons" style="justify-content:flex-start;">
+
+                <button
+                    class="button"
+                    onclick="openReader()"
+                    style="background:transparent;cursor:pointer;">
+                    Leer gratuitamente
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 
 
     <!-- =========================
-         PERSONAJES
+         LECTOR
     ========================== -->
 
-    <section id="personajes">
+    <article class="reader" id="reader">
 
-        <div class="section-title">
+        <div class="reader-header">
 
-            <span>Dentro de la historia</span>
+            <div class="section-title">
+                <span>Lectura online</span>
+                <h2>Control</h2>
+            </div>
 
-            <h2>Personajes</h2>
-
-        </div>
-
-
-        <div class="characters">
-
-
-            <article class="character">
-
-                <div class="character-image">
-                    Imagen de Derry Wyndford
-                </div>
-
-                <h3>Derry Wyndford</h3>
-
-                <div class="role">
-                    Protagonista · Control
-                </div>
-
-                <p>
-                    Derry aprendió desde niño que el control podía ser
-                    una forma de protección. En su mundo, las apariencias,
-                    el poder y el dinero tienen un precio, y él sabe
-                    exactamente cómo utilizar cada uno a su favor.
-                </p>
-
-                <p style="margin-top:15px;">
-                    Pero hay cosas que ni siquiera alguien como Derry
-                    puede controlar.
-                </p>
-
-            </article>
-
-
-            <article class="character">
-
-                <div class="character-image">
-                    Imagen de Eloise
-                </div>
-
-                <h3>Eloise</h3>
-
-                <div class="role">
-                    Protagonista · Control
-                </div>
-
-                <p>
-                    Estudiante de actuación cuya llegada a la vida de Derry
-                    comienza a desafiar las reglas que él ha construido
-                    cuidadosamente a su alrededor.
-                </p>
-
-                <p style="margin-top:15px;">
-                    Su presencia despierta algo que Derry creía tener
-                    perfectamente bajo control.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         AUTOR
-    ========================== -->
-
-    <section class="author-section" id="autor">
-
-        <div class="section-title">
-
-            <span>Detrás de las historias</span>
-
-            <h2>A.W. Ross</h2>
-
-        </div>
-
-
-        <div class="author-text">
-
-            <div class="author-name">
+            <p>
                 A.W. Ross
-            </div>
-
-            <p>
-                Autor de <em>Dinámicas de Poder</em>, una trilogía de
-                dark romance centrada en las complejas relaciones entre
-                poder, control, obsesión y dependencia.
-            </p>
-
-            <br>
-
-            <p>
-                Este espacio nace para compartir las historias,
-                personajes y mundos que forman parte de la trilogía,
-                y para construir una comunidad alrededor de ellos.
             </p>
 
         </div>
 
-    </section>
+
+        <p>
+            Aquí comenzará la lectura online de
+            <em>Control</em>.
+        </p>
+
+        <p>
+            Cuando incorporemos el PDF definitivo, esta sección será
+            reemplazada por el contenido de lectura correspondiente.
+        </p>
+
+        <p>
+            El modo de lectura permite cambiar entre la estética oscura
+            de la página y un fondo claro pensado para una lectura más
+            cómoda.
+        </p>
 
 
-    <!-- =========================
-         COMUNIDAD
-    ========================== -->
+        <div class="reader-controls">
 
-    <section class="community" id="comunidad">
+            <button
+                class="button"
+                onclick="toggleReadingMode()"
+                style="background:transparent;cursor:pointer;">
+                Cambiar modo
+            </button>
 
-        <div class="section-title">
-
-            <span>Forma parte del universo</span>
-
-            <h2>La comunidad</h2>
+            <button
+                class="button"
+                onclick="closeReader()"
+                style="background:transparent;cursor:pointer;">
+                Cerrar lectura
+            </button>
 
         </div>
 
+    </article>
 
-        <div class="community-content">
-
-            <p>
-                Las historias no terminan cuando cerramos un libro.
-                A veces es ahí cuando comienzan las teorías,
-                las preguntas y las conversaciones.
-            </p>
-
-            <p>
-                Este espacio crecerá junto con
-                <em>Dinámicas de Poder</em>.
-            </p>
+</section>
 
 
-            <div class="buttons">
+<!-- =========================
+     PERSONAJES
+========================== -->
+
+<section id="personajes">
+
+    <div class="section-title">
+
+        <span>Control</span>
+
+        <h2>Personajes</h2>
+
+    </div>
+
+
+    <div class="characters">
+
+
+        <!-- DERRY -->
+
+        <article class="character">
+
+            <div class="character-image">
 
                 <!--
-                MÁS ADELANTE PONDREMOS AQUÍ
-                INSTAGRAM, TIKTOK, DISCORD, ETC.
+                IMAGEN:
+                images/derry.jpg
                 -->
 
-                <a href="#" class="button">
-                    Próximamente
-                </a>
+                <img
+                    src="images/derry.jpg"
+                    alt="Derry Wyndford">
 
             </div>
 
+            <h3>Derry Wyndford</h3>
+
+            <div class="role">
+                Protagonista · Control
+            </div>
+
+            <p>
+                Derry fue un niño que perdió su inocencia demasiado pronto.
+                Desde entonces, desarrolló una necesidad casi obsesiva
+                de mantener el control de todo cuanto lo rodea.
+            </p>
+
+            <p style="margin-top:15px;">
+                Criado en una familia donde las apariencias lo son todo,
+                aprendió que el poder y el dinero pueden convertirse
+                en herramientas para evitar consecuencias.
+            </p>
+
+        </article>
+
+
+        <!-- ELOISE -->
+
+        <article class="character">
+
+            <div class="character-image">
+
+                <!--
+                IMAGEN:
+                images/eloise.jpg
+                -->
+
+                <img
+                    src="images/eloise.jpg"
+                    alt="Eloise">
+
+            </div>
+
+            <h3>Eloise</h3>
+
+            <div class="role">
+                Protagonista · Control
+            </div>
+
+            <p>
+                Eloise es una estudiante de actuación cuya llegada
+                a la vida de Derry comienza a desafiar las reglas
+                que él ha construido cuidadosamente a su alrededor.
+            </p>
+
+            <p style="margin-top:15px;">
+                Su presencia despierta en Derry un deseo peligroso
+                y lo obliga a enfrentarse a un pasado que creía
+                enterrado.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     AUTOR
+========================== -->
+
+<section class="author-section" id="autor">
+
+    <div class="section-title">
+
+        <span>Detrás de las historias</span>
+
+        <h2>A.W. Ross</h2>
+
+    </div>
+
+
+    <div class="author-text">
+
+        <div class="author-name">
+            A.W. Ross
         </div>
 
-    </section>
+        <p>
+            Autor de <em>Dinámicas de Poder</em>, una trilogía
+            autoconclusiva de dark romance centrada en las complejas
+            relaciones entre poder, control, obsesión y dependencia.
+        </p>
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <strong>DINÁMICAS DE PODER</strong>
+        <br>
 
         <p>
-            A.W. Ross · Dark Romance
+            Este espacio nace para compartir las historias,
+            personajes y mundos que forman parte de la trilogía,
+            y para construir una comunidad alrededor de ellos.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DERECHOS DE AUTOR
+========================== -->
+
+<section>
+
+    <div class="section-title">
+
+        <span>Propiedad intelectual</span>
+
+        <h2>Derechos de autor</h2>
+
+    </div>
+
+
+    <div class="copyright">
+
+        <h3>© 2026 A.W. Ross</h3>
+
+        <p>
+            <em>Dinámicas de Poder</em> y sus obras, personajes,
+            textos e imágenes originales están protegidos por
+            derechos de autor.
+        </p>
+
+        <br>
+
+        <p>
+            Esta obra ha sido publicada de manera independiente
+            y se encuentra disponible en Amazon.
+        </p>
+
+        <br>
+
+        <p>
+            Queda prohibida la reproducción, distribución,
+            modificación o utilización de los contenidos de esta
+            página y de las obras sin autorización previa del autor.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COMUNIDAD
+========================== -->
+
+<section class="community" id="comunidad">
+
+    <div class="section-title">
+
+        <span>Forma parte del universo</span>
+
+        <h2>La comunidad</h2>
+
+    </div>
+
+
+    <div class="community-content">
+
+        <p>
+            Las historias no terminan cuando cerramos un libro.
+            A veces es ahí cuando comienzan las teorías,
+            las preguntas y las conversaciones.
         </p>
 
         <p>
-            © 2026 A.W. Ross. Todos los derechos reservados.
+            Este espacio crecerá junto con
+            <em>Dinámicas de Poder</em>.
         </p>
 
-    </footer>
 
+        <div class="buttons">
+
+            <a href="#" class="button">
+                Próximamente
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    <strong>
+        DINÁMICAS DE PODER
+    </strong>
+
+    <p>
+        A.W. Ross · Dark Romance
+    </p>
+
+    <p>
+        © 2026 A.W. Ross · Todos los derechos reservados.
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+    function toggleReadingMode() {
+
+        document.body.classList.toggle("reading-mode");
+
+        const button = document.querySelector(".reading-toggle");
+
+        if (document.body.classList.contains("reading-mode")) {
+
+            button.textContent = "Modo oscuro";
+
+        } else {
+
+            button.textContent = "Modo lectura";
+
+        }
+    }
+
+
+    function openReader() {
+
+        const reader = document.getElementById("reader");
+
+        reader.classList.add("active");
+
+        setTimeout(function() {
+
+            reader.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }, 100);
+
+    }
+
+
+    function closeReader() {
+
+        const reader = document.getElementById("reader");
+
+        reader.classList.remove("active");
+
+    }
+
+</script>
 
 </body>
 </html>
